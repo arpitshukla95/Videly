@@ -1,0 +1,50 @@
+﻿@model List<Videly.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Customers</h2>
+@if (!Model.Any())
+{
+    <p>We don't have any customer</p>
+
+}
+
+else
+{
+ <table class="table table-bordered table-hover" id="customers">
+     <thead>
+         <tr>
+             <th>Customer</th>
+             <th>Discount Rate</th>
+             <th>Delete</th>
+         </tr>
+        
+         </thead>
+     <tbody>
+         @foreach (var customer in Model)
+         {
+            
+
+         <tr>
+             <td>
+                 @Html.ActionLink(customer.Name, "Edit", "Customer", new { id = customer.Id }, null)
+             </td>
+             <td>
+                 @customer.MembershipType.Name
+             </td>
+             <td>
+                 <button class="btn-link js-delete">Delete</button>
+             </td>
+         </tr>
+                }
+     </tbody>
+     </table>
+}
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $()
+        });
+    </script>
+    }
